@@ -52,7 +52,7 @@ export const authOptions = {
 					accessTokenExpires: (account?.expires_at ?? 0) * 1000,
 				};
 			}
-			if (Date.now() < Number(token?.accessTokenExpires)) {
+			if (Date.now() < Number(token?.accessTokenExpires)- 30 * 1000) {
 				console.log("Token is valid");
 				return token;
 			}

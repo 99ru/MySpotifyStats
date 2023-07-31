@@ -1,5 +1,4 @@
-
-
+"use client";
 import { useEffect, useState } from "react";
 import useSpotify from "@/hooks/useSpotify";
 import Image from "next/image";
@@ -11,10 +10,14 @@ interface Artist {
 }
 
 export default function TopArtists(): React.JSX.Element {
-  const spotifyApi = useSpotify();
+  const { spotifyApi, isLoading } = useSpotify();
   const [topArtists, setTopArtists] = useState<Artist[]>([]);
 
   useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+
     (async () => {
       const response = await spotifyApi.getMyTopArtists({
         limit: 5,
@@ -29,7 +32,11 @@ export default function TopArtists(): React.JSX.Element {
 
       setTopArtists(artists);
     })();
-  }, [spotifyApi]);
+  }, [spotifyApi, isLoading]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -37,7 +44,12 @@ export default function TopArtists(): React.JSX.Element {
       {topArtists.map((artist, index) => (
         <div key={index}>
           <a href={artist.link} target="_blank" rel="noreferrer">
-            <Image src={artist.image} alt={artist.name} height={30} width={30} />
+            <Image
+              src={artist.image}
+              alt={artist.name}
+              width={60}
+              height={60}
+            />
             <p>{artist.name}</p>
           </a>
         </div>
