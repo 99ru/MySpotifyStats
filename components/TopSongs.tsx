@@ -1,7 +1,8 @@
-'use client'
 import { useEffect, useState } from "react";
 import useSpotify from "@/hooks/useSpotify";
 import Image from "next/image";
+import Link from "next/link";
+import { TimeRange } from './TimeRange';
 
 interface Song {
   name: string;
@@ -13,6 +14,7 @@ interface Song {
 export default function TopSongs(): React.JSX.Element {
   const { spotifyApi, isLoading } = useSpotify();
   const [topSongs, setTopSongs] = useState<Song[]>([]);
+  const [timeRange, setTimeRange] = useState<'short_term' | 'medium_term' | 'long_term'>('short_term');
 
   useEffect(() => {
     if (isLoading) {
@@ -21,8 +23,8 @@ export default function TopSongs(): React.JSX.Element {
 
     (async () => {
       const response = await spotifyApi.getMyTopTracks({
-        limit: 5,
-        time_range: "short_term",
+        limit: 30,
+        time_range: timeRange,
       });
 
       const songs = response.body.items.map((song) => ({
@@ -34,23 +36,36 @@ export default function TopSongs(): React.JSX.Element {
 
       setTopSongs(songs);
     })();
-  }, [spotifyApi, isLoading]);
+  }, [spotifyApi, isLoading, timeRange]);
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
-      <h2>Your Top Songs (Last 30 Days)</h2>
-      {topSongs.map((song, index) => (
-        <div key={index}>
-          <a href={song.link} target="_blank" rel="noreferrer">
-            <Image src={song.image} alt={song.name} height={64} width={64}  loading="lazy"  />
-            <p>{song.name} by {song.artist}</p>
-          </a>
-        </div>
-      ))}
+    <div className="flex flex-col items-center">
+      <h2 className="mb-6">Your Top Songs</h2>
+      <TimeRange setTimeRange={setTimeRange} />
+      <div className="w-full">
+        {topSongs.map((song, index) => (
+          <div key={index} className="flex items-center gap-4 mb-4">
+            <div className="text-lg font-bold">{index + 1}.</div>
+            <Link href={song.link}>
+              <Image
+                src={song.image}
+                alt={song.name}
+                width={50}
+                height={50}
+                objectFit="cover"
+                priority={true}
+              />
+            </Link>
+            <div>
+              <p>{song.name} by {song.artist}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
