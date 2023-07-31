@@ -61,7 +61,8 @@ export default function TopSongs(): React.JSX.Element {
               />
             </Link>
             <div>
-              <p>{song.name} by {song.artist}</p>
+              <p className="font-bold">{song.name}</p>
+              <p>{song.artist}</p>
             </div>
           </div>
         ))}
