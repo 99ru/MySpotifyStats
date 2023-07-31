@@ -18,9 +18,10 @@ export default function useSpotify(): SpotifyWebApi {
 			if (session.error === "RefreshAccessTokenError") {
 				signIn();
 			}
+			const token = session?.user?.token?.accessToken;
+			console.log('Setting Spotify access token:', token);
+			spotifyApi.setAccessToken(token ?? "");
 		}
-	
-		spotifyApi.setAccessToken(session?.user?.token?.accessToken ?? "");
 	}, [session]);
 	return spotifyApi;
 }
