@@ -2,6 +2,7 @@
 
 import Nav from "@/components/Nav";
 import TopArtists from "@/components/TopArtists";
+import TopSongs from "@/components/TopSongs";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Nav />
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <TopArtists />
+        <TopSongs />
       </main>
     </div>
   );
