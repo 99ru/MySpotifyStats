@@ -19,22 +19,22 @@ export default function Nav(): React.JSX.Element {
     <SessionProvider>
       <nav className="flex items-center justify-between p-4 bg-black text-white">
         <div className="flex items-center">
-          <Image src="/logo.svg" alt="logo" width={60} height={60} />
-          <div className="text-lg font-medium ml-2">My App</div>
+          <Image src="/logo.png" width={40} height={40} alt={"Logo"} />
+          <div className="text-lg font-medium ml-2">My app</div>
         </div>
         <div>
           {session ? (
             <>
               <div className="flex items-center">
-              	<Image
-									src={session.user?.image ?? "/user.png"}
-									className="rounded-full object-contain"
-									width={30}
-									height={30}
-									alt={"User Image"}
-								/>
+                <Image
+                  src={session.user?.image ?? "/user.png"}
+                  className="rounded-full object-contain"
+                  width={40}
+                  height={40}
+                  alt={"User Image"}
+                />
                 <button
-                  className="py-2 px-4 ml-2 bg-green-500 text-white rounded-md transition duration-300 hover:bg-green-600"
+                  className="py-1 px-2 ml-2 bg-green-500 text-white rounded-md transition duration-300 hover:bg-green-600"
                   onClick={handleLogout}
                 >
                   Logout
