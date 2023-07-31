@@ -44,7 +44,7 @@ export default function TopSongs(): React.JSX.Element {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="mb-6">Your Top Songs</h2>
+      <h2 className="mb-6 text-4xl">Your Top Songs</h2>
       <TimeRange setTimeRange={setTimeRange} />
       <div className="w-full">
         {topSongs.map((song, index) => (
