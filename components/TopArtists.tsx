@@ -5,7 +5,6 @@ import Image from "next/image";
 
 interface Artist {
   name: string;
-  link: string;
   image: string;
 }
 
@@ -26,7 +25,6 @@ export default function TopArtists(): React.JSX.Element {
 
       const artists = response.body.items.map((artist) => ({
         name: artist.name,
-        link: artist.external_urls.spotify,
         image: artist.images[0]?.url,
       }));
 
@@ -43,15 +41,14 @@ export default function TopArtists(): React.JSX.Element {
       <h2>Your Top Artists (Last 30 Days)</h2>
       {topArtists.map((artist, index) => (
         <div key={index}>
-          <a href={artist.link} target="_blank" rel="noreferrer">
-            <Image
-              src={artist.image}
-              alt={artist.name}
-              width={60}
-              height={60}
-            />
-            <p>{artist.name}</p>
-          </a>
+          <Image
+            src={artist.image}
+            alt={artist.name}
+            width={64}
+            height={64}
+            loading="lazy"
+          />
+          <p>{artist.name}</p>
         </div>
       ))}
     </div>

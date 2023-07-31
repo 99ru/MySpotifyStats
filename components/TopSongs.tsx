@@ -46,7 +46,7 @@ export default function TopSongs(): React.JSX.Element {
       {topSongs.map((song, index) => (
         <div key={index}>
           <a href={song.link} target="_blank" rel="noreferrer">
-            <Image src={song.image} alt={song.name} height={60} width={60}  />
+            <Image src={song.image} alt={song.name} height={64} width={64}  loading="lazy"  />
             <p>{song.name} by {song.artist}</p>
           </a>
         </div>

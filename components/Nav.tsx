@@ -1,7 +1,10 @@
+"use client";
 import { signOut, useSession, SessionProvider } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+
 
 export default function Nav(): React.JSX.Element {
   const { data: session } = useSession();
@@ -22,25 +25,28 @@ export default function Nav(): React.JSX.Element {
           <Image src="/logo.png" width={40} height={40} alt={"Logo"} />
           <div className="text-lg font-medium ml-2">My app</div>
         </div>
+        <div className="flex space-x-4">
+          <Link href="/">Home</Link>
+          <Link href="/topartists">Artists</Link>
+          <Link href="/topsongs">Songs</Link>
+        </div>
         <div>
           {session ? (
-            <>
-              <div className="flex items-center">
-                <Image
-                  src={session.user?.image ?? "/user.png"}
-                  className="rounded-full object-contain"
-                  width={40}
-                  height={40}
-                  alt={"User Image"}
-                />
-                <button
-                  className="py-1 px-2 ml-2 bg-green-500 text-white rounded-md transition duration-300 hover:bg-green-600"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </button>
-              </div>
-            </>
+            <div className="flex items-center">
+              <Image
+                src={session.user?.image ?? "/user.png"}
+                className="rounded-full object-contain"
+                width={40}
+                height={40}
+                alt={"User Image"}
+              />
+              <button
+                className="py-1 px-2 ml-2 bg-green-500 text-white rounded-md transition duration-300 hover:bg-green-600"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
           ) : (
             <button
               className="rounded-full px-4 py-2 text-sm font-medium text-white transition duration-300 hover:bg-white hover:text-black"
@@ -53,4 +59,4 @@ export default function Nav(): React.JSX.Element {
       </nav>
     </SessionProvider>
   );
-}
+};
