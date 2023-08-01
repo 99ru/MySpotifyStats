@@ -1,16 +1,13 @@
+'use client'
 import Image from "next/image";
 import { getProviders } from "next-auth/react";
 import React from "react";
 
 import ProviderButton from "@/components/ProviderButton";
 
-export const metadata = {
-	title: "Login | Spotify Clone",
-	description: "Login to Spotify Clone",
-};
-
 export default async function Login(): Promise<React.JSX.Element> {
 	const providers = await getProviders();
+	console.log(providers)
 	return (
 		<div className="h-screen overflow-hidden bg-black">
 			<div className="flex h-full flex-col items-center justify-center">
@@ -26,6 +23,7 @@ export default async function Login(): Promise<React.JSX.Element> {
 			</div>
 		</div>
 	);
+	
 }
 
 
