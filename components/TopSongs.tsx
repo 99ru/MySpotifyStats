@@ -1,8 +1,9 @@
+"use client";
 import { useEffect, useState } from "react";
 import useSpotify from "@/hooks/useSpotify";
 import Image from "next/image";
 import Link from "next/link";
-import { TimeRange } from './TimeRange';
+import { TimeRange } from "./TimeRange";
 
 interface Song {
   name: string;
@@ -14,7 +15,9 @@ interface Song {
 export default function TopSongs(): React.JSX.Element {
   const { spotifyApi, isLoading } = useSpotify();
   const [topSongs, setTopSongs] = useState<Song[]>([]);
-  const [timeRange, setTimeRange] = useState<'short_term' | 'medium_term' | 'long_term'>('short_term');
+  const [timeRange, setTimeRange] = useState<
+    "short_term" | "medium_term" | "long_term"
+  >("short_term");
 
   useEffect(() => {
     if (isLoading) {
@@ -48,21 +51,36 @@ export default function TopSongs(): React.JSX.Element {
       <TimeRange setTimeRange={setTimeRange} />
       <div className="w-full">
         {topSongs.map((song, index) => (
-          <div key={index} className="flex items-center gap-4 mb-4">
-            <div className="text-lg font-bold">{index + 1}.</div>
-            <Link href={song.link}>
-              <Image
-                src={song.image}
-                alt={song.name}
-                width={50}
-                height={50}
-                objectFit="cover"
-                priority={true}
-              />
-            </Link>
-            <div>
+          <div key={index} className="flex items-start gap-4 mb-4">
+            <div className="flex items-center">
+              <div className="text-lg font-bold text-gray-500 mr-2">
+                {index + 1}.
+              </div>
+              <Link href={song.link}>
+                <div className="w-12 h-12 sm:w-12 sm:h-12 relative">
+                  <Image
+                    src={song.image}
+                    alt={song.name}
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                  />
+                </div>
+              </Link>
+            </div>
+            <div className="flex-grow">
               <p className="font-bold">{song.name}</p>
-              <p>{song.artist}</p>
+              <div className="flex items-center">
+                <p className="mr-2">{song.artist}</p>
+                <Link href={song.link}>
+                  <Image
+                    src="/logo.png"
+                    alt="Spotify Logo"
+                    width={16}
+                    height={16}
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         ))}
