@@ -7,7 +7,6 @@ import ProviderButton from "@/components/ProviderButton";
 
 export default async function Login(): Promise<React.JSX.Element> {
 	const providers = await getProviders();
-	console.log(providers)
 	return (
 		<div className="h-screen overflow-hidden bg-black">
 			<div className="flex h-full flex-col items-center justify-center">
