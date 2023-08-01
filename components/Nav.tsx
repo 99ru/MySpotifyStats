@@ -1,12 +1,10 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useSession, signOut } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
 
 export default function Nav() {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { data: session } = useSession();
 
   const handleLogout = async () => {
