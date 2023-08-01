@@ -15,7 +15,7 @@ export default function Nav() {
     <nav className="flex items-center justify-between p-4 bg-black text-white">
       <div className="flex items-center">
         <Image src="/logo.png" width={40} height={40} alt={"Logo"} />
-        <div className="text-lg font-medium ml-2">My app</div>
+        <div className="text-lg font-medium ml-2">MyStats</div>
       </div>
       <div className="flex space-x-4">
         <Link href="/">Home</Link>

@@ -74,7 +74,7 @@ export default function TopSongs(): React.JSX.Element {
                 <p className="mr-2">{song.artist}</p>
                 <Link href={song.link}>
                   <Image
-                    src="/logo.png"
+                    src="/logo2.png"
                     alt="Spotify Logo"
                     width={16}
                     height={16}

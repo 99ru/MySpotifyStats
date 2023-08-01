@@ -61,18 +61,19 @@ export default function TopArtists(): React.JSX.Element {
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
+             
               />
             </div>
           </Link>
-          <p className="text-sm sm:text-base">
+          <p className="text-sm sm:text-base font-bold text-gray-600">
             {index + 1}. {artist.name}
           </p>
           <Link href={artist.uri}>
             <Image
-              src="/logo.png"
+              src="/logo2.png"
               alt="Spotify Logo"
-              width={14}
-              height={14}
+              width={24}
+              height={24}
               className="sm:w-18 sm:h-18"
             />
           </Link>
