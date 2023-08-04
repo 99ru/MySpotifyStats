@@ -1,6 +1,5 @@
 # MyStats (in progress)
 
-## screenshot
 ![Alt Text](./public/screen.png)
 
 ## Features
