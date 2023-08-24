@@ -1,8 +1,8 @@
 # MyStats (in progress)
 
 ## screenshot
-![Alt Text](./public/loginscreen.png)
-![Alt Text](./public/screen.png)
+![Alt Text](./public/Home.png)
+![Alt Text](./public/Artists.png)
 
 ## Application is under review by Spotify before i can deploy it for public use.
 ![Alt Text](./public/review.png)
