@@ -1,6 +1,12 @@
 # MyStats (in progress)
 
-![Alt Text](./public/screen.png)
+## screenshot
+![Alt Text](./public/loginscreen.png)
+![Alt Text](./public/Home.png)
+![Alt Text](./public/Artists.png)
+
+## Application is under review by Spotify before i can deploy it for public use.
+![Alt Text](./public/review.png)
 
 ## Features
 1. Secure sign-in using your Spotify account.

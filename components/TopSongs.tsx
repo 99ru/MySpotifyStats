@@ -57,7 +57,7 @@ export default function TopSongs(): React.JSX.Element {
                 {index + 1}.
               </div>
               <Link href={song.link}>
-                <div className="w-12 h-12 sm:w-12 sm:h-12 relative">
+                <div className="w-12 h-12 sm:w-24 sm:h-24 relative">
                   <Image
                     src={song.image}
                     alt={song.name}
