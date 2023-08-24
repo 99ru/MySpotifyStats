@@ -1,6 +1,7 @@
 # MyStats (in progress)
 
 ## screenshot
+![Alt Text](./public/loginscreen.png)
 ![Alt Text](./public/Home.png)
 ![Alt Text](./public/Artists.png)
 
